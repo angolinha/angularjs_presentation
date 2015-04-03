@@ -9,44 +9,67 @@
   <body>
     <article>
       <section>
-        <h1>Javascriptový framework AngularJS</h1>
+        <h4>Aplikačné Architektúry Softvérových Systémov 2015</h4>
+        <h2>Javascriptový framework AngularJS</h2>
+        <h3>Richard Filipčík &amp; Martin Šustek</h3>
       </section>
       <section>
-        <h2>Keyboard Interaction</h2>
-        <h3>Powered by <a href="https://github.com/markdalgleish/bespoke-keys">bespoke-keys</a></h3>
-      </section>
-      <section>
-        <h2>Touch Interaction</h2>
-        <h3>Powered by <a href="https://github.com/markdalgleish/bespoke-touch">bespoke-touch</a></h3>
-      </section>
-      <section>
-        <h2>Responsive Slides</h2>
-        <h3>Powered by <a href="https://github.com/markdalgleish/bespoke-scale">bespoke-scale</a></h3>
-      </section>
-      <section>
-        <h2>Bullet List</h2>
-        <h3 class="bullet">Powered by <a href="https://github.com/markdalgleish/bespoke-bullets">bespoke-bullets</a></h3>
+        <h3>Témy</h3>
         <ul>
-          <li>Bullet 1</li>
-          <li>Bullet 2</li>
-          <li>Bullet 3</li>
+          <li>data binding</li>
+          <li>controllers &amp; scope</li>
+          <li>directives</li>
+          <li>services &amp; factories</li>
+          <li>MEAN stack</li>
         </ul>
       </section>
       <section>
-        <h2>Syntax Highlighting</h2>
-        <h3>Powered by <a href="http://twitter.com/LeaVerou">Lea Verou</a>'s <a href="https://github.com/LeaVerou/prism">Prism</a></h3>
-        <pre><code class="language-javascript">bespoke.from('article', [
-  classes(),
-  keys(),
-  touch(),
-  bullets('li, .bullet')
-]);
+        <h3>Hello World</h3>
+        <pre><code class="language-markup">&lt;!doctype html&gt;
+&lt;html ng-app&gt;
+  ...
+  &lt;body&gt;
+    &lt;input ng-model="username"&gt;
+      Hello &#123;&#123;username&#125;&#125;
+    &lt;script src="js/angular.js"&gt;&lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
 </code></pre>
       </section>
-      <section data-bespoke-hash="named-route">
-        <h2>Named Route</h2>
-        <h3>Powered by <a href="https://github.com/markdalgleish/bespoke-hash">bespoke-hash</a></h3>
-        <p>Look up! This route has been named with a <em>'data-bespoke-hash'</em> attribute.</p>
+      <section>
+        <h3>Hello World</h3>
+        <pre><code class="language-markup">&lt;!doctype html&gt;
+&lt;html ng-app&gt;
+  ...
+  &lt;body&gt;
+    &lt;input ng-model="username"&gt;
+      Hello &#123;&#123;username&#125;&#125;
+    &lt;script src="js/angular.js"&gt;&lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre><br>
+        <div ng-app="helloWorld" class="app">
+          <div class="input-group"><span id="label" class="input-group-addon">Pozdraviť:</span>
+            <input type="text" ng-model="username" placeholder="Osoba" aria-describedby="label" class="form-control">
+          </div>
+          <p>Hello&nbsp;<span class="result">{{username}}!</span></p>
+        </div>
+      </section>
+      <section>
+        <pre><code class="language-markup">&lt;!doctype html&gt;
+&lt;html ng-app="myapp"&gt;
+  ...
+  &lt;body&gt;
+    &lt;div ng-controller="UserController"&gt;
+      &lt;input ng-model="username"&gt;
+      Hello &#123;&#123;username&#125;&#125;
+    &lt;/div&gt;
+    
+    &lt;script src="js/angular.js"&gt;&lt;/script&gt;
+    &lt;script src="myapp/main.js"&gt;&lt;/script&gt;
+    &lt;script src="myapp/controllers.js"&gt;&lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
       </section>
       <section data-bespoke-backdrop="emphatic" class="emphatic-text">
         <h2>Emphatic Slide!</h2>
