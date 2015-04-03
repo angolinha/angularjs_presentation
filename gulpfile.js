@@ -5,6 +5,8 @@ var pkg = require('./package.json'),
   rimraf = require('gulp-rimraf'),
   rename = require('gulp-rename'),
   connect = require('gulp-connect'),
+  concat = require('gulp-concat'),
+  Filter = require('gulp-filter'),
   browserify = require('gulp-browserify'),
   uglify = require('gulp-uglify'),
   jade = require('gulp-jade'),
@@ -18,7 +20,8 @@ var pkg = require('./package.json'),
   isDist = process.argv.indexOf('serve') === -1;
 
 gulp.task('js', ['clean:js'], function() {
-  return gulp.src('src/scripts/main.js')
+  return gulp.src('src/scripts/*.js')
+    .pipe(concat('build.js'))
     .pipe(isDist ? through() : plumber())
     .pipe(browserify({ transform: ['debowerify'], debug: !isDist }))
     .pipe(isDist ? uglify() : through())
@@ -37,16 +40,20 @@ gulp.task('html', ['clean:html'], function() {
 });
 
 gulp.task('css', ['clean:css'], function() {
-  return gulp.src('src/styles/main.styl')
-    .pipe(isDist ? through() : plumber())
+  var filter = Filter('**/*.styl');
+
+  return gulp.src([
+      'src/styles/**.styl',
+      'src/styles/**.css'
+    ])
+    .pipe(filter)
     .pipe(stylus({
       // Allow CSS to be imported from node_modules and bower_components
       'include css': true,
       'paths': ['./node_modules', './bower_components']
     }))
-    .pipe(autoprefixer('last 2 versions', { map: false }))
-    .pipe(isDist ? csso() : through())
-    .pipe(rename('build.css'))
+    .pipe(filter.restore())
+    .pipe(concat('build.css'))
     .pipe(gulp.dest('dist/build'))
     .pipe(connect.reload());
 });

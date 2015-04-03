@@ -12,44 +12,76 @@ html
     article
 
       section
-        h1 Javascriptový framework AngularJS
+        h4 Aplikačné Architektúry Softvérových Systémov 2015
+        h2 Javascriptový framework AngularJS
+        h3 Richard Filipčík &amp; Martin Šustek
 
       section
-        h2 Keyboard Interaction
-        h3 Powered by <a href="https://github.com/markdalgleish/bespoke-keys">bespoke-keys</a>
-
-      section
-        h2 Touch Interaction
-        h3 Powered by <a href="https://github.com/markdalgleish/bespoke-touch">bespoke-touch</a>
-
-      section
-        h2 Responsive Slides
-        h3 Powered by <a href="https://github.com/markdalgleish/bespoke-scale">bespoke-scale</a>
-
-      section
-        h2 Bullet List
-        h3.bullet Powered by <a href="https://github.com/markdalgleish/bespoke-bullets">bespoke-bullets</a>
+        h3 Témy
         ul
-          li Bullet 1
-          li Bullet 2
-          li Bullet 3
+          li data binding
+          li controllers &amp; scope
+          li directives
+          li services &amp; factories
+          li MEAN stack
 
       section
-        h2 Syntax Highlighting
-        h3 Powered by <a href="http://twitter.com/LeaVerou">Lea Verou</a>'s <a href="https://github.com/LeaVerou/prism">Prism</a>
+        h3 Hello World
         pre
-          code.language-javascript.
-            bespoke.from('article', [
-              classes(),
-              keys(),
-              touch(),
-              bullets('li, .bullet')
-            ]);
+          code.language-markup.
+            &lt;!doctype html&gt;
+            &lt;html ng-app&gt;
+              ...
+              &lt;body&gt;
+                &lt;input ng-model="username"&gt;
+                  Hello &#123;&#123;username&#125;&#125;
+                &lt;script src="js/angular.js"&gt;&lt;/script&gt;
+              &lt;/body&gt;
+            &lt;/html&gt;
 
-      section(data-bespoke-hash='named-route')
-        h2 Named Route
-        h3 Powered by <a href="https://github.com/markdalgleish/bespoke-hash">bespoke-hash</a>
-        p Look up! This route has been named with a <em>'data-bespoke-hash'</em> attribute.
+      section
+        h3 Hello World
+        pre
+          code.language-markup.
+            &lt;!doctype html&gt;
+            &lt;html ng-app&gt;
+              ...
+              &lt;body&gt;
+                &lt;input ng-model="username"&gt;
+                  Hello &#123;&#123;username&#125;&#125;
+                &lt;script src="js/angular.js"&gt;&lt;/script&gt;
+              &lt;/body&gt;
+            &lt;/html&gt;
+        br
+        .app(ng-app="helloWorld")
+          .input-group
+            span.input-group-addon#label Pozdraviť:
+            input.form-control(
+              type="text"
+              ng-model="username"
+              placeholder="Osoba"
+              aria-describedby="label"
+            )
+          p Hello&nbsp;
+            span.result {{username}}!
+
+      section
+        pre
+          code.language-markup.
+            &lt;!doctype html&gt;
+            &lt;html ng-app="myapp"&gt;
+              ...
+              &lt;body&gt;
+                &lt;div ng-controller="UserController"&gt;
+                  &lt;input ng-model="username"&gt;
+                  Hello &#123;&#123;username&#125;&#125;
+                &lt;/div&gt;
+
+                &lt;script src="js/angular.js"&gt;&lt;/script&gt;
+                &lt;script src="myapp/main.js"&gt;&lt;/script&gt;
+                &lt;script src="myapp/controllers.js"&gt;&lt;/script&gt;
+              &lt;/body&gt;
+            &lt;/html&gt;
 
       section.emphatic-text(data-bespoke-backdrop='emphatic')
         h2 Emphatic Slide!
