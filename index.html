@@ -59,13 +59,11 @@
       &lt;input ng-model="username"&gt;
       Hello &#123;&#123;username&#125;&#125;
     &lt;/div&gt;
-    
     &lt;script src="js/angular.js"&gt;&lt;/script&gt;
     &lt;script src="myapp/main.js"&gt;&lt;/script&gt;
     &lt;script src="myapp/controllers.js"&gt;&lt;/script&gt;
   &lt;/body&gt;
-&lt;/html&gt;
-</code></pre>
+&lt;/html&gt;</code></pre>
       </section>
       <section>
         <h3>Controllers</h3>
@@ -154,7 +152,7 @@
         </div>
       </section>
       <section>
-        <h2>Direktívy</h2>
+        <h2>Direktívy &amp; Filtre</h2>
       </section>
       <section>
         <h2>Direktívy</h2>
@@ -172,6 +170,29 @@
           </div>
           <div ng-controller="App4Controller" class="row">
             <div ng-repeat="worker in workers">{{worker}}</div>
+          </div>
+        </div>
+      </section>
+      <section>
+        <h2>Filtre</h2>
+        <pre class="filter-code-listing"><code class="language-markup">&lt;html ng-app="myapp"&gt;
+ &lt;body&gt;
+  &lt;input type="text" ng-model="filterName"&gt;
+  &lt;ul&gt;
+   &lt;li ng-repeat="worker in workers &#124; filter:filterName
+          &#124; orderBy:'name'"&gt;
+    &#123;&#123;worker.name&#125;&#125; - &#123;&#123;worker.position&#125;&#125;&lt;li&gt;
+  &lt;/ul&gt;
+ &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+        <div class="app myapp5">
+          <div class="row">
+            <div class="input-group"><span id="label" class="input-group-addon">Pracovník:</span>
+              <input type="text" ng-model="filterName" aria-describedby="label" class="form-control">
+            </div>
+          </div>
+          <div ng-controller="WorkersController" class="row">
+            <div ng-repeat="worker in workers | filter:filterName | orderBy:'name'">{{worker.name | uppercase}} - {{worker.position}}</div>
           </div>
         </div>
       </section>
