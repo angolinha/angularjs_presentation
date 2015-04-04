@@ -4,7 +4,7 @@ html
     meta(charset='utf-8')
     meta(name='viewport', content='width=device-width, initial-scale=1, maximum-scale=1')
     title Javascriptový framework AngularJS
-
+    link(rel="shortcut icon", type="image/png", href="images/favicon.ico")
     link(rel='stylesheet', type='text/css', href='build/build.css')
 
   body
@@ -17,28 +17,11 @@ html
         h3 Richard Filipčík &amp; Martin Šustek
 
       section
-        h3 Témy
+        h3 História
         ul
-          li data binding
-          li controllers &amp; scope
-          li dependency injection
-          li direktívy
-          li services &amp; factories
-          li MEAN stack
-
-      section
-        h3 Hello World
-        pre
-          code.language-markup.
-            &lt;!doctype html&gt;
-            &lt;html ng-app&gt;
-              ...
-              &lt;body&gt;
-                &lt;input ng-model="username"&gt;
-                  Hello &#123;&#123;username&#125;&#125;
-                &lt;script src="js/angular.js"&gt;&lt;/script&gt;
-              &lt;/body&gt;
-            &lt;/html&gt;
+          li vznikol vo firme Google v roku 2009
+          li prvý JS framework využívajúci MVVM model
+          li tvorca sa stavil so šéfom, zredukoval LOC o 80%
 
       section
         h3 Hello World
@@ -67,6 +50,7 @@ html
             span.result {{username}}!
 
       section
+        h3 Hello World
         div.content
           span.file myapp/main.js
           pre
@@ -76,6 +60,7 @@ html
         h2 Controllers, Scope &amp; Dependency Injection
 
       section
+        h3 Controllers
         pre
           code.language-markup.
             &lt;!doctype html&gt;
@@ -94,27 +79,29 @@ html
             &lt;/html&gt;
 
       section
-          .content.nofade
-            span.file myapp/controllers.js
-            pre(data-line="5")
-              code.language-javascript
-                | angular.module('myapp')
-                |   .controller('UserController', function($scope) {
-                |     $scope.username = "Homer Simpson";
-                | });
-            .app.myapp1
-              div(ng-controller="UserController")
-                .input-group
-                  span.input-group-addon#label Pozdraviť:
-                  input.form-control(
-                    type="text"
-                    ng-model="username"
-                    aria-describedby="label"
-                  )
-                p Hello&nbsp;
-                  span.result {{username}}!
+        h3 Controllers
+        .content.nofade
+          span.file myapp/controllers.js
+          pre(data-line="5")
+            code.language-javascript
+              | angular.module('myapp')
+              |   .controller('UserController', function($scope) {
+              |     $scope.username = "Homer Simpson";
+              | });
+          .app.myapp1
+            div(ng-controller="UserController")
+              .input-group
+                span.input-group-addon#label Pozdraviť:
+                input.form-control(
+                  type="text"
+                  ng-model="username"
+                  aria-describedby="label"
+                )
+              p Hello&nbsp;
+                span.result {{username}}!
 
       section
+        h3 Dependency injection
         .content.nofade
           span.file myapp/controllers.js
           pre(data-line="5-7")
@@ -138,6 +125,12 @@ html
                   span.result {{username}}!
 
       section
+        h3 Scope
+        .content.nofade
+          img#glue-image(src="images/glue.png")
+
+      section
+        h3 Scope
         .content.nofade
           pre
             code.language-markup
@@ -157,6 +150,7 @@ html
               |   });
 
       section
+        h3 Scope
         .content.nofade
           pre
             code.language-markup
@@ -185,7 +179,34 @@ html
                 .btn.btn-block.btn-primary(ng-click="setUsername('Maggie')") setUsername('Maggie')
 
       section
-        .content.nofade
-          img#glue-image(src="images/glue.png")
+        h2 Direktívy
+
+      section
+        h2 Direktívy
+        pre
+          code.language-markup.
+            &lt;html ng-app="myapp"&gt;
+              &lt;body ng-init="workers=['Homer','Lenny','Carl']"&gt;
+                &lt;ul&gt;
+                  &lt;li ng-repeat="worker in workers"&gt; &#123;&#123;worker&#125;&#125; &lt;li&gt;
+                &lt;/ul&gt;
+                &lt;script src="js/angular.js"&gt;&lt;/script&gt;
+              &lt;/body&gt;
+            &lt;/html&gt;
+        .app.myapp4
+          .row
+            h4 Sector 7G workers:
+          .row(ng-controller="App4Controller")
+            div(ng-repeat="worker in workers") {{worker}}
+
+      section
+        h3 Zhrnutie
+        ul
+          li data binding
+          li controllers &amp; scope
+          li dependency injection
+          li direktívy &amp; filtre
+          li services &amp; factories
+          li MEAN stack
 
     script(src='build/build.js')
