@@ -7,7 +7,7 @@ html
 
     link(rel='stylesheet', type='text/css', href='build/build.css')
 
-  body(ng-app="helloWorld")
+  body
 
     article
 
@@ -54,7 +54,7 @@ html
               &lt;/body&gt;
             &lt;/html&gt;
         br
-        .app
+        .app(ng-app="helloWorld")
           .input-group
             span.input-group-addon#label Pozdraviť:
             input.form-control(
@@ -102,17 +102,40 @@ html
                 |   .controller('UserController', function($scope) {
                 |     $scope.username = "Homer Simpson";
                 | });
-            .app
+            .app.myapp1
               div(ng-controller="UserController")
                 .input-group
                   span.input-group-addon#label Pozdraviť:
                   input.form-control(
                     type="text"
-                    ng-model="username2"
+                    ng-model="username"
                     aria-describedby="label"
                   )
                 p Hello&nbsp;
-                  span.result {{username2}}!
+                  span.result {{username}}!
+
+      section
+        .content.nofade
+          span.file myapp/controllers.js
+          pre(data-line="5-7")
+            code.language-javascript
+              | angular.module('myapp')
+              |   .controller('UserController', function($scope, $timeout){
+              |     $timeout(function() {
+              |       $scope.username = "Charles Montgomery Burns";
+              |     }, 3000);
+              |   });
+          .app.myapp2
+            div(ng-controller="UserController")
+                .input-group
+                  span.input-group-addon#label Pozdraviť:
+                  input.form-control(
+                    type="text"
+                    ng-model="username"
+                    aria-describedby="label"
+                  )
+                p Hello&nbsp;
+                  span.result {{username}}!
 
       section
         h2.bullet Just the beginning...

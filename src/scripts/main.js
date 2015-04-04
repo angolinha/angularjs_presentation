@@ -10,7 +10,7 @@ var bespoke = require('bespoke'),
   forms = require('bespoke-forms');
 
 // Bespoke.js
-bespoke.from('article', [
+var deck = bespoke.from('article', [
   cube(),
   keys(),
   touch(),
@@ -25,4 +25,3 @@ bespoke.from('article', [
 // This is actually loaded from "bower_components" thanks to
 // debowerify: https://github.com/eugeneware/debowerify
 require('prism');
-
