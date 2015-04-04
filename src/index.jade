@@ -26,16 +26,16 @@ html
       section
         h3 Hello World
         pre
-          code.language-markup.
-            &lt;!doctype html&gt;
-            &lt;html ng-app&gt;
-              ...
-              &lt;body&gt;
-                &lt;input ng-model="username"&gt;
-                  Hello &#123;&#123;username&#125;&#125;
-                &lt;script src="js/angular.js"&gt;&lt;/script&gt;
-              &lt;/body&gt;
-            &lt;/html&gt;
+          code.language-markup
+            | &lt;!doctype html&gt;
+            | &lt;html ng-app&gt;
+            |   ...
+            |   &lt;body&gt;
+            |     &lt;input ng-model="username"&gt;
+            |       Hello &#123;&#123;username&#125;&#125;
+            |     &lt;script src="js/angular.js"&gt;&lt;/script&gt;
+            |   &lt;/body&gt;
+            | &lt;/html&gt;
         br
         .app(ng-app="helloWorld")
           .input-group
@@ -62,21 +62,20 @@ html
       section
         h3 Controllers
         pre
-          code.language-markup.
-            &lt;!doctype html&gt;
-            &lt;html ng-app="myapp"&gt;
-              ...
-              &lt;body&gt;
-                &lt;div ng-controller="UserController"&gt;
-                  &lt;input ng-model="username"&gt;
-                  Hello &#123;&#123;username&#125;&#125;
-                &lt;/div&gt;
-
-                &lt;script src="js/angular.js"&gt;&lt;/script&gt;
-                &lt;script src="myapp/main.js"&gt;&lt;/script&gt;
-                &lt;script src="myapp/controllers.js"&gt;&lt;/script&gt;
-              &lt;/body&gt;
-            &lt;/html&gt;
+          code.language-markup
+            | &lt;!doctype html&gt;
+            | &lt;html ng-app="myapp"&gt;
+            |   ...
+            |   &lt;body&gt;
+            |     &lt;div ng-controller="UserController"&gt;
+            |       &lt;input ng-model="username"&gt;
+            |       Hello &#123;&#123;username&#125;&#125;
+            |     &lt;/div&gt;
+            |     &lt;script src="js/angular.js"&gt;&lt;/script&gt;
+            |     &lt;script src="myapp/main.js"&gt;&lt;/script&gt;
+            |     &lt;script src="myapp/controllers.js"&gt;&lt;/script&gt;
+            |   &lt;/body&gt;
+            | &lt;/html&gt;
 
       section
         h3 Controllers
@@ -179,25 +178,51 @@ html
                 .btn.btn-block.btn-primary(ng-click="setUsername('Maggie')") setUsername('Maggie')
 
       section
-        h2 Direktívy
+        h2 Direktívy &amp; Filtre
 
       section
         h2 Direktívy
         pre
-          code.language-markup.
-            &lt;html ng-app="myapp"&gt;
-              &lt;body ng-init="workers=['Homer','Lenny','Carl']"&gt;
-                &lt;ul&gt;
-                  &lt;li ng-repeat="worker in workers"&gt; &#123;&#123;worker&#125;&#125; &lt;li&gt;
-                &lt;/ul&gt;
-                &lt;script src="js/angular.js"&gt;&lt;/script&gt;
-              &lt;/body&gt;
-            &lt;/html&gt;
+          code.language-markup
+            | &lt;html ng-app="myapp"&gt;
+            |   &lt;body ng-init="workers=['Homer','Lenny','Carl']"&gt;
+            |     &lt;ul&gt;
+            |       &lt;li ng-repeat="worker in workers"&gt; &#123;&#123;worker&#125;&#125; &lt;li&gt;
+            |     &lt;/ul&gt;
+            |     &lt;script src="js/angular.js"&gt;&lt;/script&gt;
+            |   &lt;/body&gt;
+            | &lt;/html&gt;
         .app.myapp4
           .row
             h4 Sector 7G workers:
           .row(ng-controller="App4Controller")
             div(ng-repeat="worker in workers") {{worker}}
+
+      section
+        h2 Filtre
+        pre.filter-code-listing
+          code.language-markup
+           | &lt;html ng-app="myapp"&gt;
+           |  &lt;body&gt;
+           |   &lt;input type="text" ng-model="filterName"&gt;
+           |   &lt;ul&gt;
+           |    &lt;li ng-repeat="worker in workers &#124; filter:filterName
+           |           &#124; orderBy:'name'"&gt;
+           |     &#123;&#123;worker.name&#125;&#125; - &#123;&#123;worker.position&#125;&#125;&lt;li&gt;
+           |   &lt;/ul&gt;
+           |  &lt;/body&gt;
+           | &lt;/html&gt;
+        .app.myapp5
+          .row
+            .input-group
+              span.input-group-addon#label Pracovník:
+              input.form-control(
+                type="text"
+                ng-model="filterName"
+                aria-describedby="label"
+              )
+          .row(ng-controller="WorkersController")
+            div(ng-repeat="worker in workers | filter:filterName | orderBy:'name'") {{worker.name | uppercase}} - {{worker.position}}
 
       section
         h3 Zhrnutie
