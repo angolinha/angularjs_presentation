@@ -6,7 +6,7 @@
     <title>Javascriptový framework AngularJS</title>
     <link rel="stylesheet" type="text/css" href="build/build.css">
   </head>
-  <body>
+  <body ng-app="helloWorld">
     <article>
       <section>
         <h4>Aplikačné Architektúry Softvérových Systémov 2015</h4>
@@ -18,7 +18,8 @@
         <ul>
           <li>data binding</li>
           <li>controllers &amp; scope</li>
-          <li>directives</li>
+          <li>dependency injection</li>
+          <li>direktívy</li>
           <li>services &amp; factories</li>
           <li>MEAN stack</li>
         </ul>
@@ -47,12 +48,20 @@
     &lt;script src="js/angular.js"&gt;&lt;/script&gt;
   &lt;/body&gt;
 &lt;/html&gt;</code></pre><br>
-        <div ng-app="helloWorld" class="app">
+        <div class="app">
           <div class="input-group"><span id="label" class="input-group-addon">Pozdraviť:</span>
             <input type="text" ng-model="username" placeholder="Osoba" aria-describedby="label" class="form-control">
           </div>
           <p>Hello&nbsp;<span class="result">{{username}}!</span></p>
         </div>
+      </section>
+      <section>
+        <div class="content"><span class="file">myapp/main.js</span>
+          <pre><code class="language-javascript">module = angular.module('myapp', [])</code></pre>
+        </div>
+      </section>
+      <section>
+        <h2>Controllers, Scope &amp; Dependency Injection</h2>
       </section>
       <section>
         <pre><code class="language-markup">&lt;!doctype html&gt;
@@ -71,9 +80,21 @@
 &lt;/html&gt;
 </code></pre>
       </section>
-      <section data-bespoke-backdrop="emphatic" class="emphatic-text">
-        <h2>Emphatic Slide!</h2>
-        <h3>Powered by <a href="https://github.com/markdalgleish/bespoke-backdrop">bespoke-backdrop</a></h3>
+      <section>
+        <div class="content nofade"><span class="file">myapp/controllers.js</span>
+          <pre data-line="5"><code class="language-javascript">angular.module('myapp')
+  .controller('UserController', function($scope) {
+    $scope.username = "Homer Simpson";
+});</code></pre>
+          <div class="app">
+            <div ng-controller="UserController">
+              <div class="input-group"><span id="label" class="input-group-addon">Pozdraviť:</span>
+                <input type="text" ng-model="username2" aria-describedby="label" class="form-control">
+              </div>
+              <p>Hello&nbsp;<span class="result">{{username2}}!</span></p>
+            </div>
+          </div>
+        </div>
       </section>
       <section>
         <h2 class="bullet">Just the beginning...</h2><br>
