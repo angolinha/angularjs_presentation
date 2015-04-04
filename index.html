@@ -6,7 +6,7 @@
     <title>Javascriptový framework AngularJS</title>
     <link rel="stylesheet" type="text/css" href="build/build.css">
   </head>
-  <body ng-app="helloWorld">
+  <body>
     <article>
       <section>
         <h4>Aplikačné Architektúry Softvérových Systémov 2015</h4>
@@ -48,7 +48,7 @@
     &lt;script src="js/angular.js"&gt;&lt;/script&gt;
   &lt;/body&gt;
 &lt;/html&gt;</code></pre><br>
-        <div class="app">
+        <div ng-app="helloWorld" class="app">
           <div class="input-group"><span id="label" class="input-group-addon">Pozdraviť:</span>
             <input type="text" ng-model="username" placeholder="Osoba" aria-describedby="label" class="form-control">
           </div>
@@ -86,26 +86,80 @@
   .controller('UserController', function($scope) {
     $scope.username = "Homer Simpson";
 });</code></pre>
-          <div class="app">
+          <div class="app myapp1">
             <div ng-controller="UserController">
               <div class="input-group"><span id="label" class="input-group-addon">Pozdraviť:</span>
-                <input type="text" ng-model="username2" aria-describedby="label" class="form-control">
+                <input type="text" ng-model="username" aria-describedby="label" class="form-control">
               </div>
-              <p>Hello&nbsp;<span class="result">{{username2}}!</span></p>
+              <p>Hello&nbsp;<span class="result">{{username}}!</span></p>
             </div>
           </div>
         </div>
       </section>
       <section>
-        <h2 class="bullet">Just the beginning...</h2><br>
-        <ul>
-          <li>Edit <a href="http://jade-lang.com/">Jade</a> markup in <em>'src/index.jade'</em></li>
-          <li>Edit <a href="http://learnboost.github.io/stylus/">Stylus</a> styles in <em>'src/styles/main.styl'</em></li>
-          <li>Edit JavaScript in <em>'src/scripts/main.js'</em></li>
-        </ul><br>
-        <ul>
-          <li><strong>Enjoy! :)</strong><a href="http://twitter.com/markdalgleish"> -@markdalgleish</a></li>
-        </ul>
+        <div class="content nofade"><span class="file">myapp/controllers.js</span>
+          <pre data-line="5-7"><code class="language-javascript">angular.module('myapp')
+  .controller('UserController', function($scope, $timeout){
+    $timeout(function() {
+      $scope.username = "Charles Montgomery Burns";
+    }, 3000);
+  });</code></pre>
+          <div class="app myapp2">
+            <div ng-controller="UserController">
+              <div class="input-group"><span id="label" class="input-group-addon">Pozdraviť:</span>
+                <input type="text" ng-model="username" aria-describedby="label" class="form-control">
+              </div>
+              <p>Hello&nbsp;<span class="result">{{username}}!</span></p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section>
+        <div class="content nofade">
+          <pre><code class="language-markup">&lt;div ng-controller="UserController"&gt;
+  &lt;button ng-click="setUsername()"&gt;Set username&lt;/button&gt;
+  &lt;button ng-click="setUsername('Maggie')"&gt;Set Maggie&lt;/button&gt;
+  &lt;input ng-model="username"&gt;
+  Hello &#123;&#123;username&#125;&#125;
+&lt;/div&gt;</code></pre>
+          <pre data-line="4-8"><code class="language-javascript">angular.module('myapp')
+  .controller('UserController', funtion($scope){
+    $scope.setUsername = function(username){
+      $scope.username = username ? username : "Lisa";
+    }
+  });</code></pre>
+        </div>
+      </section>
+      <section>
+        <div class="content nofade">
+          <pre><code class="language-markup">&lt;div ng-controller="UserController"&gt;
+  &lt;button ng-click="setUsername()"&gt;Set username&lt;/button&gt;
+  &lt;button ng-click="setUsername('Maggie')"&gt;Set Maggie&lt;/button&gt;
+  &lt;input ng-model="username"&gt;
+  Hello &#123;&#123;username&#125;&#125;
+&lt;/div&gt;</code></pre>
+        </div>
+        <div class="app myapp3">
+          <div ng-controller="UserController">
+            <div class="row">
+              <div class="input-group"><span id="label" class="input-group-addon">Pozdraviť:</span>
+                <input type="text" ng-model="username" aria-describedby="label" class="form-control">
+              </div>
+            </div>
+            <div class="row">Hello&nbsp;<span class="result">{{username}}!</span></div>
+            <div class="row">
+              <div class="col-lg-4 col-lg-offset-1">
+                <div ng-click="setUsername()" class="btn btn-block btn-primary">setUsername()</div>
+              </div>
+              <div class="col-lg-4 col-lg-offset-1">
+                <div ng-click="setUsername('Maggie')" class="btn btn-block btn-primary">setUsername('Maggie')</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section>
+        <div class="content nofade"><img id="glue-image" src="images/glue.png"></div>
       </section>
     </article>
     <script src="build/build.js"></script>

@@ -121,6 +121,10 @@ pre[class*="language-"] {
 token {
   font-size: 12px !important;
 }
+#glue-image {
+  max-width: 80%;
+  max-height: 80%;
+}
 
 /*!
  * Bootstrap v3.0.3 (http://getbootstrap.com)
