@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>Javascriptový framework AngularJS</title>
+    <link rel="shortcut icon" type="image/png" href="images/favicon.ico">
     <link rel="stylesheet" type="text/css" href="build/build.css">
   </head>
   <body>
@@ -14,28 +15,12 @@
         <h3>Richard Filipčík &amp; Martin Šustek</h3>
       </section>
       <section>
-        <h3>Témy</h3>
+        <h3>História</h3>
         <ul>
-          <li>data binding</li>
-          <li>controllers &amp; scope</li>
-          <li>dependency injection</li>
-          <li>direktívy</li>
-          <li>services &amp; factories</li>
-          <li>MEAN stack</li>
+          <li>vznikol vo firme Google v roku 2009</li>
+          <li>prvý JS framework využívajúci MVVM model</li>
+          <li>tvorca sa stavil so šéfom, zredukoval LOC o 80%</li>
         </ul>
-      </section>
-      <section>
-        <h3>Hello World</h3>
-        <pre><code class="language-markup">&lt;!doctype html&gt;
-&lt;html ng-app&gt;
-  ...
-  &lt;body&gt;
-    &lt;input ng-model="username"&gt;
-      Hello &#123;&#123;username&#125;&#125;
-    &lt;script src="js/angular.js"&gt;&lt;/script&gt;
-  &lt;/body&gt;
-&lt;/html&gt;
-</code></pre>
       </section>
       <section>
         <h3>Hello World</h3>
@@ -56,6 +41,7 @@
         </div>
       </section>
       <section>
+        <h3>Hello World</h3>
         <div class="content"><span class="file">myapp/main.js</span>
           <pre><code class="language-javascript">module = angular.module('myapp', [])</code></pre>
         </div>
@@ -64,6 +50,7 @@
         <h2>Controllers, Scope &amp; Dependency Injection</h2>
       </section>
       <section>
+        <h3>Controllers</h3>
         <pre><code class="language-markup">&lt;!doctype html&gt;
 &lt;html ng-app="myapp"&gt;
   ...
@@ -81,6 +68,7 @@
 </code></pre>
       </section>
       <section>
+        <h3>Controllers</h3>
         <div class="content nofade"><span class="file">myapp/controllers.js</span>
           <pre data-line="5"><code class="language-javascript">angular.module('myapp')
   .controller('UserController', function($scope) {
@@ -97,6 +85,7 @@
         </div>
       </section>
       <section>
+        <h3>Dependency injection</h3>
         <div class="content nofade"><span class="file">myapp/controllers.js</span>
           <pre data-line="5-7"><code class="language-javascript">angular.module('myapp')
   .controller('UserController', function($scope, $timeout){
@@ -115,6 +104,11 @@
         </div>
       </section>
       <section>
+        <h3>Scope</h3>
+        <div class="content nofade"><img id="glue-image" src="images/glue.png"></div>
+      </section>
+      <section>
+        <h3>Scope</h3>
         <div class="content nofade">
           <pre><code class="language-markup">&lt;div ng-controller="UserController"&gt;
   &lt;button ng-click="setUsername()"&gt;Set username&lt;/button&gt;
@@ -131,6 +125,7 @@
         </div>
       </section>
       <section>
+        <h3>Scope</h3>
         <div class="content nofade">
           <pre><code class="language-markup">&lt;div ng-controller="UserController"&gt;
   &lt;button ng-click="setUsername()"&gt;Set username&lt;/button&gt;
@@ -159,7 +154,37 @@
         </div>
       </section>
       <section>
-        <div class="content nofade"><img id="glue-image" src="images/glue.png"></div>
+        <h2>Direktívy</h2>
+      </section>
+      <section>
+        <h2>Direktívy</h2>
+        <pre><code class="language-markup">&lt;html ng-app="myapp"&gt;
+  &lt;body ng-init="workers=['Homer','Lenny','Carl']"&gt;
+    &lt;ul&gt;
+      &lt;li ng-repeat="worker in workers"&gt; &#123;&#123;worker&#125;&#125; &lt;li&gt;
+    &lt;/ul&gt;
+    &lt;script src="js/angular.js"&gt;&lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+        <div class="app myapp4">
+          <div class="row">
+            <h4>Sector 7G workers:</h4>
+          </div>
+          <div ng-controller="App4Controller" class="row">
+            <div ng-repeat="worker in workers">{{worker}}</div>
+          </div>
+        </div>
+      </section>
+      <section>
+        <h3>Zhrnutie</h3>
+        <ul>
+          <li>data binding</li>
+          <li>controllers &amp; scope</li>
+          <li>dependency injection</li>
+          <li>direktívy &amp; filtre</li>
+          <li>services &amp; factories</li>
+          <li>MEAN stack</li>
+        </ul>
       </section>
     </article>
     <script src="build/build.js"></script>
