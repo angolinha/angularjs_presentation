@@ -138,16 +138,54 @@ html
                   span.result {{username}}!
 
       section
-        h2.bullet Just the beginning...
-        br
-        ul
-          li Edit <a href="http://jade-lang.com/">Jade</a> markup in <em>'src/index.jade'</em>
-          li Edit <a href="http://learnboost.github.io/stylus/">Stylus</a> styles in <em>'src/styles/main.styl'</em>
-          li Edit JavaScript in <em>'src/scripts/main.js'</em>
-        br
-        ul
-          li
-            strong Enjoy! :)
-            a(href='http://twitter.com/markdalgleish')  -@markdalgleish
+        .content.nofade
+          pre
+            code.language-markup
+              | &lt;div ng-controller="UserController"&gt;
+              |   &lt;button ng-click="setUsername()"&gt;Set username&lt;/button&gt;
+              |   &lt;button ng-click="setUsername('Maggie')"&gt;Set Maggie&lt;/button&gt;
+              |   &lt;input ng-model="username"&gt;
+              |   Hello &#123;&#123;username&#125;&#125;
+              | &lt;/div&gt;
+          pre(data-line="4-8")
+            code.language-javascript
+              | angular.module('myapp')
+              |   .controller('UserController', funtion($scope){
+              |     $scope.setUsername = function(username){
+              |       $scope.username = username ? username : "Lisa";
+              |     }
+              |   });
+
+      section
+        .content.nofade
+          pre
+            code.language-markup
+              | &lt;div ng-controller="UserController"&gt;
+              |   &lt;button ng-click="setUsername()"&gt;Set username&lt;/button&gt;
+              |   &lt;button ng-click="setUsername('Maggie')"&gt;Set Maggie&lt;/button&gt;
+              |   &lt;input ng-model="username"&gt;
+              |   Hello &#123;&#123;username&#125;&#125;
+              | &lt;/div&gt;
+        .app.myapp3
+          div(ng-controller="UserController")
+            .row
+              .input-group
+                span.input-group-addon#label Pozdraviť:
+                input.form-control(
+                  type="text"
+                  ng-model="username"
+                  aria-describedby="label"
+                )
+            .row Hello&nbsp;
+              span.result {{username}}!
+            .row
+              .col-lg-4.col-lg-offset-1
+                .btn.btn-block.btn-primary(ng-click="setUsername()") setUsername()
+              .col-lg-4.col-lg-offset-1
+                .btn.btn-block.btn-primary(ng-click="setUsername('Maggie')") setUsername('Maggie')
+
+      section
+        .content.nofade
+          img#glue-image(src="images/glue.png")
 
     script(src='build/build.js')
