@@ -17,7 +17,7 @@ html
         h3 Richard Filipčík &amp; Martin Šustek
 
       section
-        h3 História
+        h3 História DOPLNI RISO
         ul
           li vznikol vo firme Google v roku 2009
           li prvý JS framework využívajúci MVVM model
@@ -199,6 +199,10 @@ html
             div(ng-repeat="worker in workers") {{worker}}
 
       section
+        h2 Direktívy DOPLNI MARTIN
+        | Slide o definovaní vlastnej direktívy
+
+      section
         h2 Filtre
         pre.filter-code-listing
           code.language-markup
@@ -225,13 +229,27 @@ html
             div(ng-repeat="worker in workers | filter:filterName | orderBy:'name'") {{worker.name | uppercase}} - {{worker.position}}
 
       section
+        h2 Services &amp; Factories DOPLNI RISO
+        | Ako sa dostávajú do controllera dáta
+        | Controllery môžu zdieľať službu cez DI
+
+      section
+        h2 Promises DOPLNI MARTIN
+        | Ako funguje tento institut, ktory Angualr zavadza
+
+      section
+        h2 MEAN stack DOPLNI RISO
+        | Opisat vyhody a spomenut, ze je to
+        | najrozumnejsie vyuzitie Angularu
+
+      section
         h3 Zhrnutie
         ul
-          li data binding
-          li controllers &amp; scope
-          li dependency injection
-          li direktívy &amp; filtre
-          li services &amp; factories
+          li Data binding
+          li Controllers &amp; Scope
+          li Dependency injection
+          li Direktívy &amp; Filtre
+          li Services &amp; Factories
           li MEAN stack
 
     script(src='build/build.js')

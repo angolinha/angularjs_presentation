@@ -1,5 +1,5 @@
 deck.on('activate', function(ev, el){
-  if(ev.index == 12){
+  if(ev.index == 13){
     console.clear();
     angular.bootstrap(angular.element('.myapp5'), ['myapp5']);
   }
