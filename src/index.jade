@@ -243,9 +243,31 @@ html
             div(ng-repeat="worker in workers | filter:filterName | orderBy:'name'") {{worker.name | uppercase}} - {{worker.position}}
 
       section
-        h2 Services &amp; Factories DOPLNI RISO
-        | Ako sa dostávajú do controllera dáta
-        | Controllery môžu zdieľať službu cez DI
+        h2 Factories a Services
+        //pre.filter-code-listing
+        //  code.language-markup
+        //   | &lt;html ng-app="myapp"&gt;
+        //   |  &lt;body&gt;
+        //   |   &lt;p&gt;{{workers}}&lt;/p&gt;
+        //   |  &lt;/body&gt;
+        //   | &lt;/html&gt;
+        pre.filter-code-listing
+          code.language-javascript
+           | angular.module('myApp', [])
+           |   .controller('WorkersController', function($scope, workersFactory)  {
+           |     $scope.workers = workersFactory.getWorkers();
+           |   }).factory('workersFactory', function() {
+           |     return {
+           |       getWorkers: function() {
+           |         return ["Carl", "Homer", "Lenny"];
+           |       }
+           |     }         
+           |   });
+        .app.myapp6
+          .row
+            h4 Workers
+          .row(ng-controller="App6Controller")
+            div(ng-repeat="worker in workers") {{worker}}
 
       section
         h2 Promises DOPLNI MARTIN
