@@ -299,8 +299,39 @@ html
             div(ng-repeat="worker in workers") {{worker}}
 
       section
-        h2 Promises DOPLNI MARTIN
-        | Ako funguje tento institut, ktory Angualr zavadza
+        h2 Promises
+        pre.custom-directive
+          code.language-javascript
+          | var makePromise = function(){
+          |   Service.getWeather()
+          |     .then(function(data) {
+          |       if (data.weather === 'good'){
+          |         doJob();
+          |       } else {
+          |         doSomethingElse();
+          |       }
+          |     }, function(error){
+          |       doSomethingElse();
+          |     });
+          | };
+        pre.custom-directive
+          code.language-javascript
+            | app.factory('Service', function($http, $q){
+            |   return {
+            |     getWeather: function() {
+            |       return $http.get('http://weather-api.com/sunday/afternoon')
+            |         .then(function(response) {
+            |           if (typeof response.data === 'object') {
+            |            return response.data;
+            |           } else {
+            |             return $q.reject(response.data);
+            |           }
+            |         }, function(response) {
+            |           return $q.reject(response.data);
+            |       });
+            |     }
+            |   };
+            | });
 
       section
         h2 MEAN Stack
