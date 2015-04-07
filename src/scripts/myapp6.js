@@ -13,5 +13,5 @@ angular.module('myapp6', ['ngRoute'])
       getWorkers: function() {
         return ["Carl", "Homer", "Lenny"];
       }
-    }     
+    }
   });

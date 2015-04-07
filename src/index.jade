@@ -213,8 +213,26 @@ html
             div(ng-repeat="worker in workers") {{worker}}
 
       section
-        h2 Direktívy DOPLNI MARTIN
-        | Slide o definovaní vlastnej direktívy
+        h2 Direktívy
+        pre
+          code.language-javascript
+            angular.module('myapp').directive('ngDatepicker', function() {
+              return {
+                restrict: 'A',
+                require: 'ngModel',
+                  link: function (scope, element, attrs, ngModelCtrl) {
+                    $(element).datepicker({
+                        viewMode: 'years',
+                        format: ' yyyy',
+                        minViewMode: "years"
+                  });
+                }
+              };
+            });
+        pre
+          code.language-markup
+        .app.myapp7
+          input(ng-datepicker)
 
       section
         h2 Filtre
@@ -261,7 +279,7 @@ html
            |       getWorkers: function() {
            |         return ["Carl", "Homer", "Lenny"];
            |       }
-           |     }         
+           |     }
            |   });
         .app.myapp6
           .row
