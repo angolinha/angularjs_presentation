@@ -214,25 +214,36 @@ html
 
       section
         h2 Direktívy
-        pre
+        pre.custom-directive
           code.language-javascript
-            angular.module('myapp').directive('ngDatepicker', function() {
-              return {
-                restrict: 'A',
-                require: 'ngModel',
-                  link: function (scope, element, attrs, ngModelCtrl) {
-                    $(element).datepicker({
-                        viewMode: 'years',
-                        format: ' yyyy',
-                        minViewMode: "years"
-                  });
-                }
-              };
-            });
-        pre
+            | angular.module('myapp').directive('ngDatepicker', function() {
+            |   return {
+            |     link: function (scope, element) {
+            |       $(element).datepicker({
+            |           viewMode: 'years'
+            |     });
+            |   };
+            | });
+        pre.custom-directive
           code.language-markup
+            | &lt;html ng-app="myapp"&gt;
+            |   &lt;body&gt;
+            |     &lt;input type="text" id="date" ng-datepicker ng-model="date"/&gt;
+            |   &lt;/body&gt;
+            | &lt;/html&gt;
         .app.myapp7
-          input(ng-datepicker)
+          .row(ng-controller="DirectiveController")
+            .col-lg-4.col-lg-offset-4
+              .input-group.date(data-date-format="yyyy")
+                input.form-control(
+                  type="text"
+                  ng-datepicker
+                  id="datePicker"
+                  ng-model="date"
+                  aria-describedby="date_addon"
+                )
+                span.input-group-addon#date_addon
+                  i.glyphicon.glyphicon-calendar
 
       section
         h2 Filtre

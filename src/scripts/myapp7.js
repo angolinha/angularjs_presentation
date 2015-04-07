@@ -7,17 +7,18 @@ deck.on('activate', function(ev, el){
 
 angular.module('myapp7', ['ngRoute'])
     .controller('DirectiveController', ['$scope', '$route' , function($scope, $route) {
-
+        $scope.date = "";
+        $("#date").datepicker({
+            viewMode: 'years',
+            format: ' yyyy',
+            minViewMode: "years"
+        });
     }])
     .directive('ngDatepicker', function () {
         return {
-            restrict: 'A',
-            require: 'ngModel',
-             link: function (scope, element, attrs, ngModelCtrl) {
+            link: function (scope, element, attrs, ngModelCtrl) {
                 $(element).datepicker({
-                    viewMode: 'years',
-                    format: ' yyyy',
-                    minViewMode: "years"
+                    viewMode: 'years'
                 });
             }
         };
