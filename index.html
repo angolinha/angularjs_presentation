@@ -17,9 +17,23 @@
       <section>
         <h3>História</h3>
         <ul>
-          <li>vznikol vo firme Google v roku 2009</li>
-          <li>prvý JS framework využívajúci MVVM model</li>
-          <li>tvorca sa stavil so šéfom, zredukoval LOC o 80%</li>
+          <!--li vznikol vo firme Google v roku 2009-->
+          <!--li prvý JS framework využívajúci MVVM model-->
+          <!--li tvorca sa stavil so šéfom, zredukoval LOC o 80%-->
+          <li>Vytvorený v roku 2009 Michaelom Heverym a Adamom Abronsom v Brat Tech LLC.</li>
+          <li>Spočiatku mal komerčné zameranie, od čoho sa upustilo a prešlo sa na MIT licenciu.</li>
+          <li>Abrons projekt neskôr opustil, Hevery, ktorý pracoval v Google, v ňom pokračoval s viacerými spolupracovníkmi (Igor Minár, Vojta Jína).</li>
+          <li>V roku 2012 vydaná verzia 1.0.</li>
+          <li>Google dnes projekt zastrešuje, vývoj predovšetkým vďaka komunite.</li>
+        </ul><img id="team-image" src="images/team.jpg">
+      </section>
+      <section>
+        <h3>História</h3>
+        <ul>
+          <li>Celý framework napísaný v JavaScripte.</li>
+          <li>Prvý JS framework využívajúci MVVM model.</li>
+          <li>Templatovanie pomocou HTML5 a CSS.</li>
+          <li>Rozšíriteľný prostredníctvom modulov.</li>
         </ul>
       </section>
       <section>
@@ -174,6 +188,31 @@
         </div>
       </section>
       <section>
+        <h2>Direktívy</h2>
+        <pre class="custom-directive"><code class="language-javascript">angular.module('myapp').directive('ngDatepicker', function() {
+  return {
+    link: function (scope, element) {
+      $(element).datepicker({
+          viewMode: 'years'
+    });
+  };
+});</code></pre>
+        <pre class="custom-directive"><code class="language-markup">&lt;html ng-app="myapp"&gt;
+  &lt;body&gt;
+    &lt;input type="text" id="date" ng-datepicker ng-model="date"/&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+        <div class="app myapp7">
+          <div ng-controller="DirectiveController" class="row">
+            <div class="col-lg-4 col-lg-offset-4">
+              <div data-date-format="yyyy" class="input-group date">
+                <input type="text" ng-datepicker id="datePicker" ng-model="date" aria-describedby="date_addon" class="form-control"><span id="date_addon" class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section>
         <h2>Filtre</h2>
         <pre class="filter-code-listing"><code class="language-markup">&lt;html ng-app="myapp"&gt;
  &lt;body&gt;
@@ -197,13 +236,90 @@
         </div>
       </section>
       <section>
+        <h2>Factories a Services</h2>
+        <!--pre.filter-code-listing-->
+        <!--  code.language-markup-->
+        <!--   | &lt;html ng-app="myapp"&gt;-->
+        <!--   |  &lt;body&gt;-->
+        <!--   |   &lt;p&gt;{{workers}}&lt;/p&gt;-->
+        <!--   |  &lt;/body&gt;-->
+        <!--   | &lt;/html&gt;-->
+        <pre class="filter-code-listing"><code class="language-javascript">angular.module('myApp', [])
+  .controller('WorkersController', function($scope, workersFactory)  {
+    $scope.workers = workersFactory.getWorkers();
+  }).factory('workersFactory', function() {
+    return {
+      getWorkers: function() {
+        return ["Carl", "Homer", "Lenny"];
+      }
+    }
+  });</code></pre>
+        <div class="app myapp6">
+          <div class="row">
+            <h4>Workers</h4>
+          </div>
+          <div ng-controller="App6Controller" class="row">
+            <div ng-repeat="worker in workers">{{worker}}</div>
+          </div>
+        </div>
+      </section>
+      <section>
+        <h2>Promises</h2>
+        <pre class="custom-directive"><code class="language-javascript"></code>var makePromise = function(){
+  Service.getWeather()
+    .then(function(data) {
+      if (data.weather === 'good'){
+        doJob();
+      } else {
+        doSomethingElse();
+      }
+    }, function(error){
+      doSomethingElse();
+    });
+};</pre>
+        <pre class="custom-directive"><code class="language-javascript">app.factory('Service', function($http, $q){
+  return {
+    getWeather: function() {
+      return $http.get('http://weather-api.com/sunday/afternoon')
+        .then(function(response) {
+          if (typeof response.data === 'object') {
+           return response.data;
+          } else {
+            return $q.reject(response.data);
+          }
+        }, function(response) {
+          return $q.reject(response.data);
+      });
+    }
+  };
+});</code></pre>
+      </section>
+      <section>
+        <h2>MEAN Stack</h2>
+        <div class="heading-desc">(MongoDB + ExpressJS + AngularJS + Node.js)</div>
+        <ul>
+          <li><strong>M</strong>ongoDB - NoSQL databázový systém.</li>
+          <li><strong>E</strong>xpressJS - framework pre vývoj webových aplikácií v Node.js.</li>
+          <li><strong>N</strong>ode.js - platforma pre tvorbu serverových aplikácií.</li>
+          <li>Najrozumnejšie využitie Angularu.</li>
+        </ul>
+        <ul>
+          <li class="advantages">Výhody</li>
+          <li>Všetko v JavaScripte - beží všade, kde beží JS.</li>
+          <li>Udržiavanie architektúry pomocou MVC/MVVM.</li>
+          <li>Všetky komponenty sú open-source.</li>
+          <li>Mohutná podpora komunity.</li>
+        </ul>
+      </section>
+      <section>
         <h3>Zhrnutie</h3>
         <ul>
-          <li>data binding</li>
-          <li>controllers &amp; scope</li>
-          <li>dependency injection</li>
-          <li>direktívy &amp; filtre</li>
-          <li>services &amp; factories</li>
+          <li>Data binding</li>
+          <li>Controllers &amp; Scope</li>
+          <li>Dependency injection</li>
+          <li>Direktívy &amp; Filtre</li>
+          <li>Services &amp; Factories</li>
+          <li>Promises</li>
           <li>MEAN stack</li>
         </ul>
       </section>
