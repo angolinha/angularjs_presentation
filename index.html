@@ -123,7 +123,7 @@
         <h3>Scope</h3>
         <div class="content nofade">
           <pre><code class="language-markup">&lt;div ng-controller="UserController"&gt;
-  &lt;button ng-click="setUsername()"&gt;Set username&lt;/button&gt;
+  &lt;button ng-click="setUsername(username)"&gt;Set username&lt;/button&gt;
   &lt;button ng-click="setUsername('Maggie')"&gt;Set Maggie&lt;/button&gt;
   &lt;input ng-model="username"&gt;
   Hello &#123;&#123;username&#125;&#125;
@@ -140,7 +140,7 @@
         <h3>Scope</h3>
         <div class="content nofade">
           <pre><code class="language-markup">&lt;div ng-controller="UserController"&gt;
-  &lt;button ng-click="setUsername()"&gt;Set username&lt;/button&gt;
+  &lt;button ng-click="setUsername(username)"&gt;Set username&lt;/button&gt;
   &lt;button ng-click="setUsername('Maggie')"&gt;Set Maggie&lt;/button&gt;
   &lt;input ng-model="username"&gt;
   Hello &#123;&#123;username&#125;&#125;
@@ -154,11 +154,11 @@
               </div>
             </div>
             <div class="row">Hello&nbsp;<span class="result">{{username}}!</span></div>
-            <div class="row">
-              <div class="col-lg-4 col-lg-offset-1">
-                <div ng-click="setUsername()" class="btn btn-block btn-primary">setUsername()</div>
+            <div class="row paddedRow">
+              <div class="col-lg-5 col-lg-offset-1">
+                <div ng-click="setUsername(username)" class="btn btn-block btn-primary">setUsername()</div>
               </div>
-              <div class="col-lg-4 col-lg-offset-1">
+              <div class="col-lg-5 col-lg-offset-1">
                 <div ng-click="setUsername('Maggie')" class="btn btn-block btn-primary">setUsername('Maggie')</div>
               </div>
             </div>
@@ -265,34 +265,24 @@
       </section>
       <section>
         <h2>Promises</h2>
-        <pre class="custom-directive"><code class="language-javascript"></code>var makePromise = function(){
-  Service.getWeather()
-    .then(function(data) {
-      if (data.weather === 'good'){
+        <pre class="custom-directive2"><code class="language-javascript"></code>var makePromise = function(){
+  Service.getWeather().then(function(data) {
+      if (data.weather === 'good')
         doJob();
-      } else {
+      else
         doSomethingElse();
-      }
     }, function(error){
       doSomethingElse();
-    });
-};</pre>
-        <pre class="custom-directive"><code class="language-javascript">app.factory('Service', function($http, $q){
+    }); };</pre>
+        <pre class="custom-directive2"><code class="language-javascript">app.factory('Service', function($http, $q){
   return {
     getWeather: function() {
       return $http.get('http://weather-api.com/sunday/afternoon')
         .then(function(response) {
-          if (typeof response.data === 'object') {
-           return response.data;
-          } else {
-            return $q.reject(response.data);
-          }
+          return response.data;
         }, function(response) {
           return $q.reject(response.data);
-      });
-    }
-  };
-});</code></pre>
+      }); } }; });</code></pre>
       </section>
       <section>
         <h2>MEAN Stack</h2>
