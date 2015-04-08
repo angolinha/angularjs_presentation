@@ -148,7 +148,7 @@ html
           pre
             code.language-markup
               | &lt;div ng-controller="UserController"&gt;
-              |   &lt;button ng-click="setUsername()"&gt;Set username&lt;/button&gt;
+              |   &lt;button ng-click="setUsername(username)"&gt;Set username&lt;/button&gt;
               |   &lt;button ng-click="setUsername('Maggie')"&gt;Set Maggie&lt;/button&gt;
               |   &lt;input ng-model="username"&gt;
               |   Hello &#123;&#123;username&#125;&#125;
@@ -168,7 +168,7 @@ html
           pre
             code.language-markup
               | &lt;div ng-controller="UserController"&gt;
-              |   &lt;button ng-click="setUsername()"&gt;Set username&lt;/button&gt;
+              |   &lt;button ng-click="setUsername(username)"&gt;Set username&lt;/button&gt;
               |   &lt;button ng-click="setUsername('Maggie')"&gt;Set Maggie&lt;/button&gt;
               |   &lt;input ng-model="username"&gt;
               |   Hello &#123;&#123;username&#125;&#125;
@@ -185,10 +185,10 @@ html
                 )
             .row Hello&nbsp;
               span.result {{username}}!
-            .row
-              .col-lg-4.col-lg-offset-1
-                .btn.btn-block.btn-primary(ng-click="setUsername()") setUsername()
-              .col-lg-4.col-lg-offset-1
+            .row.paddedRow
+              .col-lg-5.col-lg-offset-1
+                .btn.btn-block.btn-primary(ng-click="setUsername(username)") setUsername()
+              .col-lg-5.col-lg-offset-1
                 .btn.btn-block.btn-primary(ng-click="setUsername('Maggie')") setUsername('Maggie')
 
       section
@@ -300,38 +300,28 @@ html
 
       section
         h2 Promises
-        pre.custom-directive
+        pre.custom-directive2
           code.language-javascript
           | var makePromise = function(){
-          |   Service.getWeather()
-          |     .then(function(data) {
-          |       if (data.weather === 'good'){
+          |   Service.getWeather().then(function(data) {
+          |       if (data.weather === 'good')
           |         doJob();
-          |       } else {
+          |       else
           |         doSomethingElse();
-          |       }
           |     }, function(error){
           |       doSomethingElse();
-          |     });
-          | };
-        pre.custom-directive
+          |     }); };
+        pre.custom-directive2
           code.language-javascript
             | app.factory('Service', function($http, $q){
             |   return {
             |     getWeather: function() {
             |       return $http.get('http://weather-api.com/sunday/afternoon')
             |         .then(function(response) {
-            |           if (typeof response.data === 'object') {
-            |            return response.data;
-            |           } else {
-            |             return $q.reject(response.data);
-            |           }
+            |           return response.data;
             |         }, function(response) {
             |           return $q.reject(response.data);
-            |       });
-            |     }
-            |   };
-            | });
+            |       }); } }; });
 
       section
         h2 MEAN Stack
